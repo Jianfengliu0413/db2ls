@@ -47,6 +47,20 @@ class db2ls:
             print(f"Error executing query: {e}")
             pass
 
+    def tables(self) -> List[str]:
+        """
+        Retrieve the names of all tables in the database.
+
+        Returns:
+        - list: List of table names.
+        """
+        query = "SELECT name FROM sqlite_master WHERE type='table';"
+        rows = self.fetchall(query)
+        if rows:
+            return [row[0] for row in rows]
+        else:
+            return []
+    
     def fetchall(self, query: str, params: Optional[Tuple] = None) -> Optional[List[Tuple]]:
         # Execute a SQL query and return all results.
         try:
