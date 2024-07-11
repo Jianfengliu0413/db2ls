@@ -48,12 +48,7 @@ class db2ls:
             pass
 
     def tables(self) -> List[str]:
-        """
-        Retrieve the names of all tables in the database.
-
-        Returns:
-        - list: List of table names.
-        """
+        # Retrieve the names of all tables in the database.
         query = "SELECT name FROM sqlite_master WHERE type='table';"
         rows = self.fetchall(query)
         if rows:
